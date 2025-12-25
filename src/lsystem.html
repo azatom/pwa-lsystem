@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>L-System Fractals</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/marked/16.3.0/lib/marked.umd.js" integrity="sha512-p6CwIuqimImGywlprlZqDYTAteV+0lEZPYdGJ5wPDvFyYYcNIt6QvUTGy5FIMzlPdEQawgScbMW/MDTg7va+EQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="lsystem.js"></script>
+  <link rel="stylesheet" href="lsystem.css">
+</head>
+
+<body>
+  <div id="left">
+    <div id="buttons" class="buttons">
+      <button id="buttonhelp" title="Help / Shift: Clears localstorage and reloads without urlparams" class="altclick">
+        <div class="a">&nbsp;<br><b>?</b></div>
+        <div class="b">reset<br>&nbsp;</div>
+      </button>
+      <button id="buttonsubmit" title="Update (Ctrl+Enter)">
+        <svg class="checked0" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 9.464 10">
+          <path fill="none" stroke="#000f" stroke-linecap="round" stroke-linejoin="round" d="m0 0 3.464 2L0 4V0" />Update
+        </svg>
+        <!--object class="checked0" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=+F++++F++++F,_a=30,_l=4,_cc=%23000f,_cb=%230000,_z=3">Update</object-->
+        <object class="checked1" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=F+F+F+F,_a=90,_l=4,_cc=%23000f,_cb=%230000,_z=3">Stop</object>
+      </button>
+      <button id="buttontpbg" title="Highlights transparency">checked bg</button>
+      <button id="buttondot" title="Show endpoints only">
+        <object class="checked0" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=++++++F++++F,_a=20,_cc=%23000f,_cb=%230000,_l=8,_z=6">Line</object>
+        <object class="checked1" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=++++++F++++F,_a=20,_0=0,_cb=%230000,_l=8,_z=6,_k=2">Dots</object>
+      </button>
+      <button id="buttonalleg" title="Show all examples">all examples</button>
+      <button id="buttonnexteg" class="altclick" title="Shift: prev. example">
+        <div class="a">&nbsp;<br>next e.g.</div>
+        <div class="b">prev e.g.<br>&nbsp;</div>
+      </button>
+      <button id="buttonnpp" class="altclick" title="Shift: decrease CAREFUL!">
+        <div class="a">&nbsp;<br>n++</div>
+        <div class="b">n--<br>&nbsp;</div>
+      </button>
+      <button id="buttonangleinc" class="altclick" title="Angle inc/dec">
+        <div class="a">&nbsp;<br>a++</div>
+        <div class="b">a--<br>&nbsp;</div>
+      </button>
+      <button id="buttondefs" class="altclick" title="Shift: put defaults; put viewbox Into textarea">
+        <div class="a">&nbsp;<br>viewBox</div>
+        <div class="b">defs<br>&nbsp;</div>
+      </button>
+      <button id="buttoncursive" class="altclick" title="Shift: alternative; experiment, adds turbulence into svg or whole page">
+        <div class="a">&nbsp;<br>_hand</div>
+        <div class="b">shake<br>&nbsp;</div>
+      </button>
+      <button id="buttonminilog" class="dropdown" data-checked title="Log">log</button>
+      <button id="buttonexport" class="dropdown" title="Show available exports">export</button>
+      <button id="buttonreserved2" class="export hidden" title="buttonreserved2">
+      </button>
+      <button id="buttonjs" class="export hidden" title="Link to small, parametrizable svg">
+        <div class="a">url<br>svg</div>
+        <svg class="b" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="-9.4 -7.057 12.457 12.457">
+          <path fill="none" stroke="#000f" stroke-linecap="round" stroke-linejoin="round" d="M0 0v4h-8v-8h4m0 4 2.828-2.828 2.829-2.829v4m0-4h-4" />url
+        </svg>
+        <!--object class="b" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=++F++FF++FF++F++f---FF[+++F]---F,_a=45,_l=4,_z=1.4,_cb=%230000,_cc=%23000f">url</object-->
+      </button>
+      <button id="buttonurleditor" class="export hidden" title="Link to this editor with url parameters">
+        <div class="a">url<br>editor</div>
+        <object class="b" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=++F++FF++FF++F++f---FF[+++F]---F,_a=45,_l=4,_z=1.4,_cb=%230000,_cc=%23000f">url</object>
+      </button>
+      <button id="buttonsvg" class="export hidden" title="Download big, generated .svg">
+        <div class="a">SVG<br>&nbsp;</div>
+        <object class="b" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=[A]!----A,A=-FFFFF---FF++FFFFFF--FF,_a=45,_l=1,_n=2,_z=1.4,_cb=%230000,_cc=%23000f">svg</object>
+      </button>
+      <button id="buttonpng" class="export hidden" title="Download PNG">
+        <div class="a">png<br>&nbsp;</div>
+        <object class="b" tabindex="-1" type="image/svg+xml" data="lsystem.svg#S=[A]!----A,A=-FFFFF---FF++FFFFFF--FF,_a=45,_l=1,_n=2,_z=1.4,_cb=%230000,_cc=%23000f">svg</object>
+      </button>
+      <button id="buttonline" class="export hidden altclick" title="To clipboard - Shif: json - For multiline: ctrl+c without selection">
+        <div class="a">&nbsp;<br>copy</div>
+        <div class="b">json<br>&nbsp;</div>
+      </button>
+      <button tabindex="0" id="buttonlog" class="hidden" title="expand"></button>
+    </div>
+    <div id="textarea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></div>
+    <button id="buttontxtclose" class="close" title="Close keyboard" tabindex="-1">&times;</button>
+  </div>
+  <button id="divider" tabindex="-1" title="moveable divider"></button>
+  <div id="right">
+    <div id="message" class="hidden"></div>
+    <div id="smallsvgs" class="hidden"></div>
+    <div id="bigsvg" class="hidden"></div>
+    <div id="readme" class="hidden" data-src="README.md"></div>
+  </div>
+</body>
+
+</html>

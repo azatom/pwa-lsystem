@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    a {
+      display: block;
+      text-overflow: ellipsis;
+      max-width: 50vmin;
+    }
+
+    span {
+      float: left;
+    }
+    
+    object {
+      width: 16em;
+      height: 16em;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        margin: 0;
+      }
+      object {
+        width: 50vmin;
+        height: 50vmin;
+      }
+    }
+  </style>
+  <script src="lsystem.examples.js"></script>
+</head>
+
+<body>
+  <script>
+    const svg = 'lsystem.svg';
+    examples.forEach(example => {
+      const url = svg + (example ? '#' + example : '');
+      const maybeTitle = example.split(/[&,]/).find(a => a.startsWith('='));
+      const title = maybeTitle ? maybeTitle.substring(1) : '[default]';
+
+      const span = document.createElement('span');
+      const a = document.createElement('a');
+      const object = document.createElement('object');
+
+      a.href = url;
+      a.textContent = title;
+      object.data = url;
+      object.type = 'image/svg+xml';
+      object.textContent = 'error';
+
+      span.append(a);
+      span.append(object);
+      document.body.append(span);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<svg onload='b(event)' xmlns='http://www.w3.org/2000/svg'><script>//<![CDATA[
+const b=(e)=>{
+  const svg=e.target; (onhashchange=()=>{
+  const R=JSON.parse('{"'+(location.href.split(/[?#]/)[1] ||
+    'S=AX,A=[+AX-AX-AX]-AX+AX+AX-,F=,X=F+F+F+FFF-F-F-F,_a=60,_n=3'
+  ).replace(/[&,]/g,'","').replace(/=/g,'":"')+'"}');
+  const S=[], Q=Math.PI/2, T=R._a/90||1;
+  let [x,y,a,A,mx,Mx,my,My]=Array(8).fill(0), o='M0,0', d=1, l=R._l||9;
+  for (const q of function*g(n) {
+    if (n) for (const p of g(n-1)) yield* R?.[p]??p; else yield* R.S;
+  }(R._n))
+    'F'==q || 'f'==q ? (x+=l*Math.cos(Q*(a*T+A)), mx=x>mx?mx:x, Mx=x>Mx?x:Mx,
+                        y+=l*Math.sin(Q*(a*T+A)), my=y>my?my:y, My=y>My?y:My,
+                        o+=('f'==q?'M':'L')+x+','+y) :
+    '+'==q ? a+=d : '*'==q ? l*=R._m : '!'==q ? d=-d :
+    '-'==q ? a-=d : '/'==q ? l/=R._m :
+    '|'==q ? A=(A+2)%4 : '^'==q ? A=(A+d+4)%4 :
+    '['==q ? S.push([x,y,a,A,l]) :
+    ']'==q ? ([x,y,a,A,l]=S.pop(), o+='M'+x+','+y) : 0;
+  svg.setAttribute('viewBox',`${mx-1} ${my-1} ${Mx-mx+2} ${My-my+2}`);
+  svg.querySelector('path').setAttribute('d',o); })()
+}//]]></script>
+<path stroke='#000' stroke-linecap='round' stroke-linejoin='round' fill='none'/>
+</svg>

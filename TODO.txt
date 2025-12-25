@@ -1,0 +1,29 @@
+! base (aka. app's ~location/htmlBase/rootfolder) calculated twice: in sw and in app
+! Pinch-zoom
+
+- One readme
+- Export lsystem.svg
+- Mobile immediate exit from "keyboard mode" on outside tap of textarea
+- If only dots and gaussianblured: draw once each (aka. path from grid)
++ Starting angle (aka. rotate)
++ Animeate on (_a _l _m?) inc/dec
+? Reqestanimationframe instead of "processing..."
++ Force mobile/desktop, dark/light modes
+? Mobile back button
++ Turbulence in svg? (no use if segments have same turb at path joints;
+    R=S=+F,_a=11,_hand=1 ; ch:turbulenced outside ov vb ; fx:better)
++ Replace longtap ? button: [<|>]
+? Performance: SegmentSet
+? How different are generator than array? GC seems effective enough.
++ Make R immutable: no parseFloat
++ Make R mutable: addDefaults get from lsystemSvg
++ Add IFS guessing: show first iter rectangles?
++ Add iteration overlay or multi svg?
+? Webkit blur bug/feGaussianBlur?
++ 3D, HigherDImensionalProjections (IFS?)
++ Canvas
++ ?webgl ? copy UI from typical threejs
++ Colored fill <> ()
++ Multiple/arbitrary angle <> ()
++ ... length <> ()
++ Svg strip/optimize: metadata, accuracy ~pixelscale

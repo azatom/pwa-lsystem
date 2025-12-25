@@ -1,0 +1,25 @@
+{
+  "name": "L-System Fractals",
+  "short_name": "LSF",
+  "start_url": "./",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "lang": "en",
+  "prefer_related_applications": false,
+  "description": "desc",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "192x192.png",
+      "type": "image/png"
+    }
+  ]
+}
